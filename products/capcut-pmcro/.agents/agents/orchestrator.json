@@ -1,5 +1,5 @@
 {
-  "id": "tooensure.capcut.orchestrator",
+  "id": "tooensure.capcut.agent.orchestrator",
   "kind": "orchestrator",
   "independentSurface": true,
   "independentChecker": false,

@@ -1,9 +1,9 @@
 {
-  "grantId": "tooensure-capcut-scaffold-v1",
+  "grantId": "tooensure-capcut-agent-scaffold-v1",
   "principal": "Tooensure-LLC",
   "orchestratorRole": "agent",
   "domain": {
-    "domainId": "tooensure.capcut.product",
+    "domainId": "tooensure.capcut.agent",
     "charterId": "capcut-scaffold-001",
     "policyRefs": ["product.manifest.json", "marketplace.source.json"]
   },

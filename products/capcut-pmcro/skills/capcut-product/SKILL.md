@@ -1,11 +1,11 @@
 ---
-name: capcut-product
-description: Generate and check a bounded CapCut-oriented content-product scaffold through PMCR-O without claiming official CapCut access or adding upload authority.
+name: capcut-agent
+description: Generate and check a bounded CapCut Agent scaffold through PMCR-O without claiming official CapCut access or adding upload authority.
 ---
 
-# CapCut product scaffold
+# CapCut Agent scaffold
 
-Use this skill to shape a CapCut-oriented product repository from declared
+Use this skill to shape a CapCut Agent product repository from declared
 intent, identity, and local resources. It produces a provider-neutral contract
 and trail. It does not log into CapCut, store credentials, upload media, or
 publish content.
@@ -23,10 +23,15 @@ for that verdict, records an earned constraint, and emits one unexecuted seed.
 
 ## Input
 
-Accept a product request containing owner, identity, target repository/path,
+Accept an agent product request containing owner, identity, target repository/path,
 parent marketplace ref, content intent, acceptance criteria, and non-goals.
 Require a validated `product.manifest.json`, `marketplace.source.json`, and
 `autonomy-grant.example.json` before writing.
+
+Before a self-update, read `platform-capabilities.example.json`. Invoke the
+platform skill creator only when the active platform declares that capability;
+otherwise emit a manual next seed. Keep self-update limited to declarative
+skill material and route the proposal through a separate checker.
 
 ## Output
 
@@ -42,3 +47,8 @@ CapCut integration.
 - Never let the maker approve its own output.
 - Never execute the reflector seed automatically.
 - Stop on missing parent provenance, scope changes, or an unavailable checker.
+
+The public identity is `capcut-agent`; the governed package is `capcut-pmcro`.
+Child capability names must use the `capcut-agent-*` namespace and must carry
+their own status, mode, authority, and checker evidence. `capcut-agent-computer-use`
+is not executable in this scaffold.

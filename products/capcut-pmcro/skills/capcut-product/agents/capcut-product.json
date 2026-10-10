@@ -1,9 +1,11 @@
 {
-  "id": "tooensure.capcut.product.skill",
+  "id": "tooensure.capcut.agent.skill",
   "kind": "skill-agent",
   "independentSurface": true,
   "samplePromptsRef": "references/sample-prompts.md",
   "mode": "scaffold-only",
   "requires": ["product.manifest.json", "marketplace.source.json", "autonomy-grant.example.json"],
-  "checker": "tooensure.capcut.checker"
+  "checker": "tooensure.capcut.agent.checker",
+  "publicAgentId": "capcut-agent",
+  "governancePackage": "capcut-pmcro"
 }

@@ -1,9 +1,0 @@
-{
-  "id": "tooensure.capcut.agent.reflector",
-  "kind": "reflector",
-  "independentSurface": true,
-  "independentChecker": false,
-  "authority": "earned-constraint-and-next-seed",
-  "waitFor": "checker.verdict(status=verified, independent=true)",
-  "nextSeed": "one-unexecuted-orchestrator-owned-seed"
-}

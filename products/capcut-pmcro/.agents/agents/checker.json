@@ -1,5 +1,5 @@
 {
-  "id": "tooensure.capcut.checker",
+  "id": "tooensure.capcut.agent.checker",
   "kind": "checker",
   "independentSurface": true,
   "independentChecker": true,

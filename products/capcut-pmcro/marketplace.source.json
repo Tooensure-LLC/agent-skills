@@ -1,6 +1,6 @@
 {
   "artifactType": "github-repository-child",
-  "childId": "tooensure.capcut.product",
+  "childId": "tooensure.capcut.agent",
   "parentMarketplace": {
     "repository": "pmcr-o/skills",
     "ref": "feature/thought-transfer-pmcro-23526a8",
@@ -12,7 +12,9 @@
   "derivedTarget": {
     "repository": "Tooensure-LLC/agent-skills",
     "path": "products/capcut-pmcro",
-    "mode": "derived-child-not-authority-fork"
+    "mode": "derived-child-not-authority-fork",
+    "publicAgentId": "capcut-agent",
+    "governancePackage": "capcut-pmcro"
   },
   "sourceNotes": [
     "Tooensure-LLC/skills is an existing fork of dotnet/skills and is not modified.",

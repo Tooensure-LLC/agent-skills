@@ -1,5 +1,5 @@
 {
-  "id": "tooensure.capcut.reflector",
+  "id": "tooensure.capcut.agent.reflector",
   "kind": "reflector",
   "independentSurface": true,
   "independentChecker": false,
