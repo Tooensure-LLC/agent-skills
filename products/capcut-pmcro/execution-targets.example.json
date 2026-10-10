@@ -1,0 +1,44 @@
+{
+  "apiVersion": "pmcro.execution-targets/v1",
+  "defaultMode": "export-guide",
+  "selectionRule": "explicit-target-or-export-guide",
+  "init": {
+    "command": "python scripts/init.py",
+    "defaultTarget": "export-guide",
+    "doesNotInstall": true,
+    "doesNotAuthenticate": true,
+    "doesNotExecute": true
+  },
+  "targets": {
+    "export-guide": {
+      "host": "user-selected-capcut",
+      "installationOwner": "user",
+      "agentTools": [],
+      "sideEffects": [],
+      "requires": ["project-intent", "export-preferences"],
+      "output": "numbered-user-instructions"
+    },
+    "browser-session": {
+      "host": "approved-browser-session",
+      "installationOwner": "none-for-capcut-web",
+      "sessionOwner": "user-or-authorized-browser-host",
+      "agentTools": ["browser-surface"],
+      "sideEffects": ["cloud-project-change", "download-request"],
+      "requires": ["declared-browser-capability", "user-authorized-session", "separate-checker"],
+      "forbidden": ["credential-collection", "account-creation", "publishing-without-grant"]
+    },
+    "desktop-session": {
+      "host": "user-computer",
+      "installationOwner": "user",
+      "requiredSoftware": "CapCut Desktop",
+      "agentTools": ["approved-computer-use-surface"],
+      "sideEffects": ["local-project-change", "local-file-write", "export-render"],
+      "requires": ["desktop-installed-by-user", "declared-computer-use-capability", "separate-checker"],
+      "forbidden": ["silent-install", "credential-collection", "external-publish-without-grant"]
+    }
+  },
+  "fallback": {
+    "mode": "export-guide",
+    "reason": "The agent must not infer a browser or user-computer surface."
+  }
+}

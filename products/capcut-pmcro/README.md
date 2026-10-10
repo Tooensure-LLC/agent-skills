@@ -28,6 +28,39 @@ CapCut API access, upload capability, account authority, monetization, or a
 market outcome. Any real integration must be introduced as a separately
 validated adapter with its own checker cycle.
 
+## Execution target
+
+Start with `init`. The initializer creates a small PMCR-O activation packet;
+the user does not need to know the directory layout or MAF details first.
+
+The default mode is `export-guide`. It gives a slow local model a deterministic
+instruction packet and leaves installation, sign-in, editing, and export to
+the user. The skill does not install CapCut.
+
+- `export-guide` — instructions only; no browser or desktop tool required.
+- `browser-session` — optional approved browser surface; CapCut Web runs in a
+  browser, so no separate CapCut installation is required.
+- `desktop-session` — optional approved computer-use surface on the user's
+  computer; the user installs and controls CapCut Desktop.
+
+Every mode returns a PMCR-O execution packet with `I AM`, target, user actions,
+agent actions, evidence, status, and one next seed. A browser or desktop
+session is never inferred from the model name or from the presence of an
+export guide.
+
+## Minimal user interaction
+
+```text
+User: init
+Agent: creates the export-guide activation packet and asks which target is wanted.
+User: browser-session
+Agent: checks the declared browser capability and returns the next PMCR-O task.
+```
+
+The same task can be supplied explicitly as `pmcro-task.example.json`. Higher
+autonomy is enabled by a capability check and a bounded grant; it is never
+silently enabled because a model or host happens to support tools.
+
 ## Naming contract
 
 | Name | Meaning |
@@ -67,3 +100,7 @@ actions. Those require a new grant and checker cycle.
 - `marketplace.source.json` — provenance and parent-child mapping.
 - `product.request.json` — the bounded product intent and acceptance contract.
 - `platform-capabilities.example.json` — capability negotiation and self-update routes.
+- `execution-targets.example.json` — browser, desktop, and guide-only target contract.
+- `execution-packet.example.json` — the small deterministic output a local model follows.
+- `pmcro-task.example.json` — a copyable PMCR-O task envelope.
+- `autonomy-ladder.example.json` — guide, browser, desktop, adapter, and self-update levels.

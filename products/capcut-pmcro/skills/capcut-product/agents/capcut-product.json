@@ -7,5 +7,11 @@
   "requires": ["product.manifest.json", "marketplace.source.json", "autonomy-grant.example.json"],
   "checker": "tooensure.capcut.agent.checker",
   "publicAgentId": "capcut-agent",
-  "governancePackage": "capcut-pmcro"
+  "governancePackage": "capcut-pmcro",
+  "defaultExecutionMode": "export-guide",
+  "executionTargetContract": "execution-targets.example.json",
+  "executionPacketExample": "execution-packet.example.json",
+  "initEntrypoint": "python scripts/init.py",
+  "taskContract": "pmcro-task.example.json",
+  "autonomyContract": "autonomy-ladder.example.json"
 }

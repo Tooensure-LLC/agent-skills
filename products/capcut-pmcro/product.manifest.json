@@ -6,8 +6,35 @@
   "slug": "capcut-agent",
   "governancePackage": "capcut-pmcro",
   "version": "0.1.0",
-  "entrypoints": ["@orchestrator /pmcro", "@skill-creator /create-skill", "@pmcro-marketplace /generate-product"],
+  "entrypoints": ["init", "@orchestrator /pmcro", "@skill-creator /create-skill", "@pmcro-marketplace /generate-product"],
+  "initEntrypoint": "python scripts/init.py",
+  "taskContract": "pmcro-task.example.json",
+  "autonomyContract": "autonomy-ladder.example.json",
   "platformCapabilityContract": "platform-capabilities.example.json",
+  "executionTargetContract": "execution-targets.example.json",
+  "defaultExecutionMode": "export-guide",
+  "installationPolicy": {
+    "owner": "user-directed",
+    "browser": "none-required",
+    "desktop": "user-installs-and-controls",
+    "agent": "never-installs-or-authenticates-without-an-explicit-platform-grant"
+  },
+  "localModelBudget": {
+    "provider": "ollama",
+    "contextTokens": 16384,
+    "rolePromptTokensMax": 2000,
+    "skillTextTokensMax": 4000,
+    "conversationInputTokensMax": 8000,
+    "reservedOutputTokensMin": 2000,
+    "oneActionPerStep": true
+  },
+  "autonomyLadder": [
+    {"level": 0, "mode": "export-guide", "default": true, "requires": [], "sideEffects": []},
+    {"level": 1, "mode": "browser-session", "default": false, "requires": ["declared-browser-capability", "user-authorized-session"], "sideEffects": ["cloud-project-change", "download-request"]},
+    {"level": 2, "mode": "desktop-session", "default": false, "requires": ["desktop-installed-by-user", "declared-computer-use-capability"], "sideEffects": ["local-project-change", "local-file-write", "export-render"]},
+    {"level": 3, "mode": "adapter-execute", "default": false, "requires": ["versioned-adapter", "autonomy-grant", "separate-checker"], "sideEffects": ["adapter-declared"]},
+    {"level": 4, "mode": "skill-self-update", "default": false, "requires": ["declared-skill-creator-capability", "existing-grant", "separate-checker"], "sideEffects": ["declarative-files-only"]}
+  ],
   "selfUpdate": {
     "mode": "platform-gated-propose-and-check",
     "route": "invoke-skill-creator-only-when-platform-capability-is-declared",
@@ -30,7 +57,7 @@
     {"id": "capcut-agent-content", "status": "scaffolded", "mode": "inspect-simulate-check", "authority": "local-project-text-only"},
     {"id": "capcut-agent-computer-use", "status": "planned", "mode": "simulate-only", "authority": "none"}
   ],
-  "modes": ["inspect", "simulate", "execute", "check", "package"],
+  "modes": ["inspect", "simulate", "export-guide", "execute", "check", "package"],
   "promotion": "checker-verified-only",
   "parentMarketplace": "pmcr-o/skills@feature/thought-transfer-pmcro-23526a8",
   "targetRepository": "Tooensure-LLC/agent-skills",

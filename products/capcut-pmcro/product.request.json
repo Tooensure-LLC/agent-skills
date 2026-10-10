@@ -13,6 +13,12 @@
     "public agent identity is distinct from the governed PMCR-O package",
     "planned capabilities carry explicit status and authority",
     "platform-gated skill-creator self-update is declared without assuming availability",
+    "default export-guide output is deterministic for a slow Ollama model",
+    "browser and desktop execution targets declare installation ownership explicitly",
+    "execution packet separates user actions from agent actions and evidence",
+    "a user can start with init and receive a PMCR-O activation packet",
+    "higher autonomy is explained and capability-gated rather than silently enabled",
+    "a PMCR-O task envelope can be supplied directly to the skill",
     "provenance and parent-child relationship are recorded",
     "trail validator passes with an unexecuted next seed"
   ],
