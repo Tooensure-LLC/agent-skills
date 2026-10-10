@@ -1,0 +1,31 @@
+{
+  "apiVersion": "pmcro.platform-capabilities/v1",
+  "agent": "capcut-agent",
+  "governancePackage": "capcut-pmcro",
+  "skillCreator": {
+    "entrypoint": "@skill-creator /create-skill",
+    "requires": ["declared-platform-capability", "existing-grant", "separate-checker"],
+    "writes": ["skills/**", "references/**", "scripts/**", "assets/**", "tests/**"],
+    "neverWrites": ["autonomy-grant.example.json", ".agents/agents/checker.json", ".pmcro/trails/** history", "credentials/**"]
+  },
+  "platforms": {
+    "codex": {"skillCreator": "direct", "selfUpdate": "allowed-with-checker"},
+    "claude": {"skillCreator": "adapter-required", "selfUpdate": "platform-gated"},
+    "ollama": {"skillCreator": "local-script-or-manual", "selfUpdate": "manual-orchestrated"},
+    "maf": {"skillCreator": "maf-workflow-gated", "selfUpdate": "workflow-and-checker-gated"},
+    "mcp": {"skillCreator": "mcp-tool-gated", "selfUpdate": "tool-and-checker-gated"},
+    "harness": {"skillCreator": "harness-task-gated", "selfUpdate": "task-and-checker-gated"},
+    "codeact": {"skillCreator": "codeact-tool-gated", "selfUpdate": "tool-and-checker-gated"}
+  },
+  "unknownPlatform": {
+    "skillCreator": "unavailable",
+    "selfUpdate": "manual-seed-only",
+    "reason": "Never infer a write capability from a model or host name."
+  },
+  "promotion": {
+    "makerMayPropose": true,
+    "checkerMustBeSeparate": true,
+    "reflectorEmitsUnexecutedSeed": true,
+    "nextSeedAutoExecution": false
+  }
+}
