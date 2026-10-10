@@ -1,0 +1,25 @@
+{
+  "apiVersion": "pmcro.product-repo/v1",
+  "kind": "AgentProductRepository",
+  "id": "tooensure.capcut.product",
+  "version": "0.1.0",
+  "entrypoints": ["@orchestrator /pmcro", "@skill-creator /create-skill", "@pmcro-marketplace /generate-product"],
+  "sourceOfTruth": {
+    "agents": ".agents/agents",
+    "protocol": ".pmcro/protocol",
+    "trails": ".pmcro/trails",
+    "scripts": "scripts"
+  },
+  "defaultOutputContract": "pmcro.skill/v1",
+  "trailContract": ".pmcro/protocol/trail-event.schema.json",
+  "autonomyGrant": "autonomy-grant.example.json",
+  "providerAdapters": ["codex", "claude", "ollama", "maf", "mcp", "harness", "codeact"],
+  "modes": ["inspect", "simulate", "execute", "check", "package"],
+  "promotion": "checker-verified-only",
+  "parentMarketplace": "pmcr-o/skills@feature/thought-transfer-pmcro-23526a8",
+  "targetRepository": "Tooensure-LLC/agent-skills",
+  "targetPath": "products/capcut-pmcro",
+  "productMode": "scaffold-only",
+  "nonGoals": ["official-capcut-api", "credential-access", "upload", "publishing", "market-outcome-guarantee"],
+  "limits": {"iterations": 3, "toolCalls": 24, "deadlineMs": 600000, "maxDepth": 2}
+}

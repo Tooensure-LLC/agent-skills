@@ -1,0 +1,9 @@
+{
+  "id": "tooensure.capcut.product.skill",
+  "kind": "skill-agent",
+  "independentSurface": true,
+  "samplePromptsRef": "references/sample-prompts.md",
+  "mode": "scaffold-only",
+  "requires": ["product.manifest.json", "marketplace.source.json", "autonomy-grant.example.json"],
+  "checker": "tooensure.capcut.checker"
+}
