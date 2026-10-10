@@ -1,0 +1,27 @@
+{
+  "intent": "Generate a bounded CapCut Agent scaffold for Tooensure-LLC.",
+  "publicAgentId": "capcut-agent",
+  "governancePackage": "capcut-pmcro",
+  "owner": "Tooensure-LLC",
+  "sourceMarketplace": "pmcr-o/skills@feature/thought-transfer-pmcro-23526a8",
+  "artifactType": "agent-product-repository",
+  "mode": "scaffold-only",
+  "acceptance": [
+    "generic PMCR-O phases are represented",
+    "orchestrator, independent checker, and reflector agents exist",
+    "every generated skill surface has agents, scripts, references, assets, tests, and prompts",
+    "public agent identity is distinct from the governed PMCR-O package",
+    "planned capabilities carry explicit status and authority",
+    "platform-gated skill-creator self-update is declared without assuming availability",
+    "provenance and parent-child relationship are recorded",
+    "trail validator passes with an unexecuted next seed"
+  ],
+  "nonGoals": [
+    "CapCut account access",
+    "credential storage",
+    "video upload",
+    "computer-use account automation",
+    "automatic publishing",
+    "guaranteed sales or market outcomes"
+  ]
+}

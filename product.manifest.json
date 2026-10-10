@@ -1,0 +1,41 @@
+{
+  "apiVersion": "pmcro.product-repo/v1",
+  "kind": "AgentProductRepository",
+  "id": "tooensure.capcut.agent",
+  "displayName": "CapCut Agent",
+  "slug": "capcut-agent",
+  "governancePackage": "capcut-pmcro",
+  "version": "0.1.0",
+  "entrypoints": ["@orchestrator /pmcro", "@skill-creator /create-skill", "@pmcro-marketplace /generate-product"],
+  "platformCapabilityContract": "platform-capabilities.example.json",
+  "selfUpdate": {
+    "mode": "platform-gated-propose-and-check",
+    "route": "invoke-skill-creator-only-when-platform-capability-is-declared",
+    "allowedPaths": ["skills/**", "references/**", "scripts/**", "assets/**", "tests/**"],
+    "requiredEvidence": ["platform-capability", "skill-creator-result", "diff", "independent-checker", "reflector-next-seed"],
+    "forbiddenMutations": ["autonomy-grant", "checker-authority", "orchestrator-charter", "trail-history-rewrite", "credentials", "external-publish"],
+    "autoExecuteNextSeed": false
+  },
+  "sourceOfTruth": {
+    "agents": ".agents/agents",
+    "protocol": ".pmcro/protocol",
+    "trails": ".pmcro/trails",
+    "scripts": "scripts"
+  },
+  "defaultOutputContract": "pmcro.skill/v1",
+  "trailContract": ".pmcro/protocol/trail-event.schema.json",
+  "autonomyGrant": "autonomy-grant.example.json",
+  "providerAdapters": ["codex", "claude", "ollama", "maf", "mcp", "harness", "codeact"],
+  "capabilities": [
+    {"id": "capcut-agent-content", "status": "scaffolded", "mode": "inspect-simulate-check", "authority": "local-project-text-only"},
+    {"id": "capcut-agent-computer-use", "status": "planned", "mode": "simulate-only", "authority": "none"}
+  ],
+  "modes": ["inspect", "simulate", "execute", "check", "package"],
+  "promotion": "checker-verified-only",
+  "parentMarketplace": "pmcr-o/skills@feature/thought-transfer-pmcro-23526a8",
+  "targetRepository": "Tooensure-LLC/agent-skills",
+  "targetPath": "products/capcut-pmcro",
+  "productMode": "scaffold-only",
+  "nonGoals": ["official-capcut-api", "credential-access", "upload", "publishing", "market-outcome-guarantee"],
+  "limits": {"iterations": 3, "toolCalls": 24, "deadlineMs": 600000, "maxDepth": 2}
+}
