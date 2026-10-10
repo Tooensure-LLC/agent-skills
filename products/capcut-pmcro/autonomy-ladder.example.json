@@ -1,0 +1,49 @@
+{
+  "apiVersion": "pmcro.autonomy-ladder/v1",
+  "agent": "capcut-agent",
+  "defaultLevel": 0,
+  "levels": [
+    {
+      "level": 0,
+      "mode": "export-guide",
+      "label": "Guide only",
+      "enableWith": "init",
+      "agentMay": ["explain", "plan", "validate-declarations", "emit-packet"],
+      "agentMayNot": ["install", "login", "open-browser", "control-desktop", "export"]
+    },
+    {
+      "level": 1,
+      "mode": "browser-session",
+      "label": "Approved browser session",
+      "enableWith": "user-selects-browser-session-and-platform-declares-browser-capability",
+      "agentMay": ["route-to-approved-browser-surface", "record-observable-evidence"],
+      "agentMayNot": ["collect-credentials", "create-account", "publish-without-grant"]
+    },
+    {
+      "level": 2,
+      "mode": "desktop-session",
+      "label": "Approved user-computer session",
+      "enableWith": "user-installs-capcut-and-platform-declares-computer-use-capability",
+      "agentMay": ["route-to-approved-computer-use-surface", "record-local-export-evidence"],
+      "agentMayNot": ["silent-install", "collect-credentials", "publish-without-grant"]
+    },
+    {
+      "level": 3,
+      "mode": "adapter-execute",
+      "label": "Verified adapter",
+      "enableWith": "versioned-adapter-plus-autonomy-grant-plus-separate-checker",
+      "agentMay": ["execute-declared-adapter-actions"],
+      "agentMayNot": ["widen-scope", "skip-checker", "execute-next-seed-automatically"]
+    },
+    {
+      "level": 4,
+      "mode": "skill-self-update",
+      "label": "Platform skill-creator update",
+      "enableWith": "platform-declares-skill-creator-and-existing-grant",
+      "agentMay": ["propose-declarative-skill-diff", "invoke-declared-skill-creator", "request-checker"],
+      "agentMayNot": ["rewrite-grant", "rewrite-checker-authority", "rewrite-trail-history", "add-credentials"]
+    }
+  ],
+  "promotion": "checker-verified-only",
+  "nextSeedAutoExecution": false
+}

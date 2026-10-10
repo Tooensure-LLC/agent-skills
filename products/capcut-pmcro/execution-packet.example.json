@@ -1,0 +1,42 @@
+{
+  "apiVersion": "pmcro.execution-packet/v1",
+  "trailId": "tooensure-capcut-agent-trail",
+  "cycleId": "capcut-cycle-001",
+  "phase": "plan",
+  "iAm": {
+    "agent": "tooensure.capcut.agent",
+    "role": "planner",
+    "authority": "plan-only"
+  },
+  "intent": "Prepare a CapCut export using the user's selected target.",
+  "executionTarget": "export-guide",
+  "installation": {
+    "required": false,
+    "owner": "user-directed",
+    "agentMayInstall": false
+  },
+  "userActions": [
+    "Open CapCut Web or CapCut Desktop on your computer.",
+    "Open the project and confirm the timeline is ready.",
+    "Choose the requested export settings and select Export.",
+    "Confirm the downloaded file and output location."
+  ],
+  "agentActions": [
+    "Present the numbered export guide.",
+    "Validate that target, resolution, frame rate, format, and output location are declared.",
+    "Do not claim that CapCut opened, rendered, or exported."
+  ],
+  "evidence": [
+    "user-confirmed-target",
+    "user-confirmed-export-settings",
+    "user-provided-output-path-or-file-check"
+  ],
+  "status": "instruction-ready",
+  "simulation": true,
+  "verified": false,
+  "nextSeed": {
+    "level": "meta2",
+    "unexecuted": true,
+    "promptIntent": "If the user authorizes a browser or desktop surface, check its declared capability before routing execution."
+  }
+}

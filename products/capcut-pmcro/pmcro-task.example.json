@@ -1,0 +1,30 @@
+{
+  "apiVersion": "pmcro.task/v1",
+  "command": "init",
+  "intent": "Prepare a CapCut project for export using the safest available target.",
+  "owner": "user",
+  "agent": "capcut-agent",
+  "target": "export-guide",
+  "mode": "simulate",
+  "authority": "user-directed",
+  "resources": [
+    "product.manifest.json",
+    "execution-targets.example.json",
+    "autonomy-ladder.example.json",
+    "skills/capcut-product/references/capcut-export-guide.md"
+  ],
+  "acceptance": [
+    "target is explicit or defaults to export-guide",
+    "installation owner is stated",
+    "user actions and agent actions are separated",
+    "execution evidence is not claimed without a run",
+    "one next seed is emitted and remains unexecuted"
+  ],
+  "nonGoals": [
+    "silent installation",
+    "credential collection",
+    "account creation",
+    "upload or publishing authority",
+    "automatic execution of the next seed"
+  ]
+}
